@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    background-color: #778da9;
+    min-height: 100vh;
+}
+.app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.header {
+    width: 100%;
+    height: 64px;
+    background-color: #1b263b;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 50px;
+}
+.log-reg-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+.log-reg-page form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap: 6px;
+    background-color: white;
+    padding: 30px;
+}
+.log-reg-page input {
+    height: 30px;
+    padding: 0 10px;
+}
+.show-error {
+    color: darkred;
+    height: 40px;
+    margin: 20px 0;
+}
+.user-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+.user-card {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 40px;
+    gap: 40px;
+}
+.user-card-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.user-card-header hr {
+    margin: 3px 0 3px 0;
+    width: 200px;
+}
+.user-card-header .profile-status {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+}
+.profile-status-online-indicator {
+    color: green;
+    font-size: 40px;
+}
+.profile-status-offline-indicator {
+    color: grey;
+    font-size: 40px;
+}
+.user-card-middle {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.user-card-middle-elem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
+}
+.user-card-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+.modal-change-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .5);
+    z-index: 20;
+}
+.modal-change {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px;
+    min-width: 400px;
+}
+.modal-change-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.modal-change-close {
+    font-size: 40px;
+    cursor: pointer;
+}
+/*.login-registration-wrap {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    gap: 20px;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    flex-grow: 1;*/
+/*}*/
+/*.login-registration-form {*/
+/*    background-color: white;*/
+/*    padding: 20px;*/
+/*    border-radius: 10px;*/
+/*}*/
+/*.login-registration-header {*/
+/*    text-align: center;*/
+/*    font-size: 18px;*/
+/*}*/
+/*.login-registration-middle {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    margin: 10px 0;*/
+/*}*/
+/*.login-registration-middle-element {*/
+/*    margin: 2px;*/
+/*}*/
+/*.login-registration-middle-element label {*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    justify-content: end;*/
+/*    gap: 8px;*/
+/*    align-items: center;*/
+/*}*/
+/*.login-registration-middle-element label input {*/
+/*    height: 30px;*/
+/*    padding: 0 8px;*/
+/*}*/
+/*.login-registration-remember {*/
+/*    display: flex;*/
+/*    justify-content: end;*/
+/*    align-items: center;*/
+/*    margin: 10px 0;*/
+/*}*/
+/*.login-registration-remember input{*/
+/*    cursor: pointer;*/
+/*}*/
+/*.login-registration-footer {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    align-items: center;*/
+/*    gap: 6px;*/
+/*}*/
+/*.login-registration-footer a {*/
+/*    font-size: 14px;*/
+/*    color: blue;*/
+/*    text-decoration: none;*/
+/*    transition: 0.2s;*/
+/*}*/
+/*.login-registration-footer a:hover {*/
+/*    font-size: 14px;*/
+/*    color: red;*/
+/*    text-decoration: none;*/
+/*    transition: 0.2s;*/
+/*}*/
+/*.login-registration-footer button {*/
+/*    font-size: 18px;*/
+/*    height: 40px;*/
+/*    padding: 5px 10px;*/
+/*    cursor: pointer;*/
+/*    background-color: rgba(30, 144, 255, 1);*/
+/*    border-radius: 5px;*/
+/*    border: none;*/
+/*    color: white;*/
+/*    transition: all 0.2s;*/
+/*}*/
+/*.login-registration-footer button:hover {*/
+/*    font-size: 18px;*/
+/*    height: 40px;*/
+/*    padding: 5px 10px;*/
+/*    cursor: pointer;*/
+/*    background-color: rgb(0, 120, 235);*/
+/*    border-radius: 5px;*/
+/*    border: none;*/
+/*    color: white;*/
+/*}*/

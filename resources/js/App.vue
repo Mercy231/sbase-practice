@@ -1,7 +1,7 @@
 <template>
-    <h1>Hey!</h1>
+    <router-view></router-view>
 </template>
 
-<script>
+<script setup>
 
 </script>

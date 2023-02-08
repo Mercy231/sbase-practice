@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('app');
+Route::controller(UserController::class)->group(function () {
+    Route::get('/logout', 'logout');
+    Route::post('/login', 'login');
+    Route::post('/registration', 'registration');
+    Route::get('/getUserdataById/{id}', 'getUserdataById');
+    Route::post('/changeEmail', 'changeEmail');
+    Route::post('/changePhone', 'changePhone');
+    Route::post('/changePassword', 'changePassword');
+    Route::get('/userdata', 'userdata');
+    Route::get('/logout', 'logout');
 });
+
+
+Route::get('/{any}', function (){
+    return view('app');
+})->where('any', '.*');
