@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,6 +27,12 @@ Route::controller(UserController::class)->group(function () {
     Route::get('/logout', 'logout');
 });
 
+Route::controller(PostController::class)->group(function () {
+    Route::post('/postCreate', 'postCreate');
+    Route::post('/postEdit', 'postEdit');
+    Route::get('/postDelete/{id}', 'postDelete');
+    Route::get('/getPosts', 'getPosts');
+});
 
 Route::get('/{any}', function (){
     return view('app');

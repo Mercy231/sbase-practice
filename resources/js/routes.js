@@ -21,11 +21,6 @@ export default createRouter({
             name: 'registration',
             component: () => import('./components/Registration.vue'),
         },
-        // {
-        //     path: '/userprofile',
-        //     name: 'userprofile',
-        //     component: () => import('./components/User.vue'),
-        // },
         {
             path: '/user/:id',
             name: 'user',

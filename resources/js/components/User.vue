@@ -87,16 +87,16 @@
         <!--Change-password-->
         <div v-if="showModal.showModalPassword" class="modal-change-wrap">
             <form method="post" action="" class="modal-change" @submit.prevent="changePassword">
-            <div class="modal-change-header">
-                <h2>Change password</h2>
-                <span @click="
-                showModal.showModalPassword=false;
-                update.showMassage=false;
-                update.password=null;
-                update.newPassword=null;
-                update.newPassword_confirmation=null;
-                " class="modal-change-close">&times;</span>
-            </div>
+                <div class="modal-change-header">
+                    <h2>Change password</h2>
+                    <span @click="
+                    showModal.showModalPassword=false;
+                    update.showMassage=false;
+                    update.password=null;
+                    update.newPassword=null;
+                    update.newPassword_confirmation=null;
+                    " class="modal-change-close">&times;</span>
+                </div>
                 <input v-model="update.newPassword" type="password" placeholder="New password">
                 <input v-model="update.newPassword_confirmation" type="password" placeholder="Confirm new password">
                 <button type="submit">Change password</button>
