@@ -4,12 +4,13 @@ export default createRouter({
     history: createWebHistory(),
     routes: [
         {
+            path: '/',
+            redirect: {name: 'home'},
+        },
+        {
             path: '/home',
             name: 'home',
             component: () => import('./components/Home.vue'),
-            meta: {
-                requiresAuth: true
-            }
         },
         {
             path: '/login',

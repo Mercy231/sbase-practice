@@ -1,13 +1,5 @@
 <template>
-    <div class="header">
-        <div class="nav-bar">
-            <h1><a href="/home">Home</a></h1>
-        </div>
-        <div class="user-bar">
-
-            <h1><a href="/login">Login</a></h1>
-        </div>
-    </div>
+    <Header/>
     <div class="log-reg-page">
         <form @submit.prevent="login" action="" method="post">
             <h1>Log in</h1>
@@ -16,6 +8,7 @@
             <button type="submit">Log in</button>
             <h4><a href="/registration">Create new account</a></h4>
         </form>
+
         <div class="show-error">
             <h4>{{form.error}}</h4>
         </div>
@@ -23,15 +16,11 @@
 </template>
 
 <script setup>
+import Header from "@/components/Header.vue";
 import {onMounted, ref} from "vue";
 import {useRouter} from "vue-router";
 import axios from "axios";
 
-let form = ref({
-    email: '',
-    password: '',
-    error: '',
-});
 const router = useRouter();
 const getToken = async () => {
     await axios.get('/sanctum/csrf-cookie');
@@ -48,6 +37,7 @@ const login = async () => {
         }
     });
 }
+
 onMounted( async () => {
     await getToken();
     await axios.get('/userdata')
@@ -59,5 +49,11 @@ onMounted( async () => {
         .catch(errors => {
             console.log(errors);
         });
+});
+
+let form = ref({
+    email: '',
+    password: '',
+    error: '',
 });
 </script>

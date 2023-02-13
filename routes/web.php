@@ -32,6 +32,10 @@ Route::controller(PostController::class)->group(function () {
     Route::post('/postEdit', 'postEdit');
     Route::get('/postDelete/{id}', 'postDelete');
     Route::get('/getPosts', 'getPosts');
+    Route::post('/createComment', 'createComment');
+    Route::post('/createReply', 'createReply');
+    Route::post('/replyEdit', 'replyEdit');
+    Route::get('/replyDelete/{id}', 'replyDelete');
 });
 
 Route::get('/{any}', function (){
