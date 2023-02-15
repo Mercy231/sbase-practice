@@ -24,11 +24,11 @@
                 </div>
             </div>
 
-            <div v-if="props.post_data.comments" class="replies-list">
+            <div v-if="props.post_data.comment" class="replies-list">
                 <Comments
                     :userdata="props.userdata"
                     :commentData="comment"
-                    v-for="comment in props.post_data.comments"
+                    v-for="comment in props.post_data.comment"
                 />
             </div>
         </div>

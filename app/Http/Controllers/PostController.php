@@ -42,28 +42,12 @@ class PostController extends Controller
         return response()->json(['success' => true], 200);
     }
 
-    public function getPosts()  //NEEDS TO UPDATE (MODEL RELATIONS?)
+    public function getPosts()
     {
         $posts = Post::latest()
         ->select('posts.*')
         ->get()
         ->toArray();
-
-        foreach ($posts as $key => $post) {     //TOO BAD
-            $allComments = Comment::where('post_id', '=', $post['id'])->get();
-            $comments = [];
-            foreach ($allComments as $comment) {
-                if ($comment->parent_id == null) {
-                    $comments[] = $comment;
-                }
-            }
-
-            foreach ($comments as $key2 => $comment) {
-                $comments[$key2]['comments'] = $this->getReplies($comment);
-            }
-            $posts[$key]['comments'] = $comments;
-        }
-
         return response()->json($posts, 200);
     }
 
@@ -158,7 +142,7 @@ class PostController extends Controller
             Comment::create([
                 'user_id' => Auth::user()->id,
                 'post_id' => $request->post_id,
-                'parent_id' => $request->parent_id,
+                'comment_id' => $request->parent_id,
                 'text' => $request->text,
                 'image' => $request->file('image')->storePublicly('images', 'public'),
             ]);
@@ -166,7 +150,7 @@ class PostController extends Controller
             Comment::create([
                 'user_id' => Auth::user()->id,
                 'post_id' => $request->post_id,
-                'parent_id' => $request->parent_id,
+                'comment_id' => $request->parent_id,
                 'text' => $request->text,
             ]);
         }
@@ -209,7 +193,7 @@ class PostController extends Controller
 
     public function deleteReplyChildren($comment)
     {
-        $replies = Comment::where('parent_id', '=', $comment->id)->get();
+        $replies = Comment::where('comment_id', '=', $comment->id)->get();
         if ($replies) {
             foreach ($replies as $key => $reply) {
                 $this->deleteReplyChildren($replies[$key]);
@@ -219,17 +203,5 @@ class PostController extends Controller
             Storage::delete('/public/'.$comment->image);
         }
         Comment::find($comment->id)->delete();
-    }
-
-    public function getReplies($comment)
-    {
-        $collection = [null];
-        $collection = Comment::where('parent_id', '=', $comment->id)->get();
-        if ($collection) {
-            foreach ($collection as $key => $comment) {
-                $collection[$key]['comments'] = $this->getReplies($comment);
-            }
-        }
-        return $collection;
     }
 }

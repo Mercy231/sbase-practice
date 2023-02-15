@@ -14,10 +14,11 @@ class Comment extends Model
         'text',
         'user_id',
         'post_id',
-        'parent_id'
+        'comment_id'
     ];
     protected $with = [
         'user',
+        'comment'
     ];
 
     public function post()
@@ -27,5 +28,9 @@ class Comment extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+    public function comment()
+    {
+        return$this->hasMany(Comment::class,  'comment_id');
     }
 }
