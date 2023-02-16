@@ -106,7 +106,7 @@ const handleOnchangeReply = (e) => {
 }
 const createReply = async () => {
     await axios.post('/createReply', {
-        post_id: createReplyData.value.post_id,
+        post_id: props.commentData.post_id,
         parent_id: props.commentData.id,
         text: createReplyData.value.text,
         image: createReplyData.value.image

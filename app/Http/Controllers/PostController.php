@@ -88,6 +88,7 @@ class PostController extends Controller
             Storage::delete('/public/'.$post->image);
         }
         Post::find($id)->delete();
+        Comment::where('post_id', '=', $post->id)->delete();
         return response()->json(['success' => true], 200);
     }
 

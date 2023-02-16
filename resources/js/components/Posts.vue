@@ -100,7 +100,7 @@ const props = defineProps({
 })
 const createComment = async () => {
     await axios.post('/createComment', {
-        post_id: createCommentData.value.post_id,
+        post_id: props.post_data.id,
         text: createCommentData.value.text,
         image: createCommentData.value.image
     }, {
