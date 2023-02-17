@@ -31,6 +31,7 @@
                     :userdata="props.userdata"
                     :commentData="comment"
                     v-for="comment in props.commentData.comment"
+                    @dataUpdate="emits('dataUpdate')"
                 />
             </div>
         </div>
@@ -80,6 +81,8 @@ import moment from "moment/moment";
 import {ref} from "vue";
 import axios from "axios";
 
+const emits = defineEmits(['dataUpdate']);
+
 const props = defineProps({
     userdata: {
         type: Object,
@@ -116,6 +119,7 @@ const createReply = async () => {
         }
     }).then(response => {
         showReplyModal.value = false;
+        emits('dataUpdate');
         console.log(response.data);
     })
 }
@@ -133,6 +137,7 @@ const editReply = async () => {
         if (response.data.success) {
             replyEditData.value.error = 'Post updated';
             showReplyEdit.value = false;
+            emits('dataUpdate');
         } else {
             replyEditData.value.error = response.data.error;
         }
@@ -141,6 +146,7 @@ const editReply = async () => {
 const deleteReply = async () => {
     if (confirm("Delete post?")) {
         await axios.get(`/replyDelete/${props.commentData.id}`);
+        emits('dataUpdate');
     }
 }
 

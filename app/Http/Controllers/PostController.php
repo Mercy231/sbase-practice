@@ -181,7 +181,7 @@ class PostController extends Controller
                 'image' => $request->file('image')->storePublicly('images', 'public')
             ]);
         } else {
-            Comment::find($request->id)->update(['text' => $request->text]);
+            Comment::where('id', '=', $request->id)->update(['text' => $request->text]);
         }
         return response()->json(['success' => true], 200);
     }

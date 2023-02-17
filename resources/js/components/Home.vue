@@ -9,6 +9,7 @@
         <Posts :userdata="userdata"
                :post_data="post"
                v-for="post in posts"
+               @dataUpdate="getPosts"
         />
     </div>
 
@@ -103,9 +104,6 @@ onMounted(async () => {
     await getToken()
     await getUser()
     await getPosts()
-    window.setInterval(async () => {
-        await getPosts();
-    },3 * 1000);
 });
 
 let posts = ref();
